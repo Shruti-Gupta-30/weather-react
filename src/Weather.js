@@ -19,7 +19,7 @@ export default function Weather() {
 							<input type="submit" value="Search" className="btn btn-primary" />
 						</div>
 						<div className="col-1">
-							<a href="#">
+							<a href="https://www.shecodes.io/">
 								<FontAwesomeIcon icon="fa-solid fa-location-dot"></FontAwesomeIcon>
 							</a>
 						</div>
