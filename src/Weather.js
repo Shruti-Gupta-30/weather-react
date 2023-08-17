@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import FormattedDate from "./FormatDate";
 import "./Weather.css";
 /*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";*/
 
@@ -22,6 +23,8 @@ export default function Weather(props) {
 			pressure: response.data.main.pressure,
 			humidity: response.data.main.humidity,
 			wind: response.data.wind.speed,
+
+			date: new Date(response.data.dt * 1000),
 			iconUrl:
 				"https://assets.msn.com/weathermapdata/1/static/weather/Icons/taskbar_v10/Condition_Card/D200PartlySunnyV2.svg",
 		});
@@ -66,7 +69,9 @@ export default function Weather(props) {
 							<li>
 								<strong>Current Weather in {weatherData.city}</strong>
 							</li>
-							<li>13:47</li>
+							<li>
+								<FormattedDate date={weatherData.date} />
+							</li>
 						</ul>
 						<div className="row" id="mainData">
 							<div className="d-flex weather-temp">
@@ -86,9 +91,8 @@ export default function Weather(props) {
 							</div>
 						</div>
 						<div className="row" id="infoSen">
-							Expect {weatherData.description} skies. The high will reach{" "}
-							{Math.round(weatherData.maxTemp)}°C and the lowest will be{" "}
-							{Math.round(weatherData.minTemp)}°C.
+							The high will reach {Math.round(weatherData.maxTemp)}°C and the
+							lowest will be {Math.round(weatherData.minTemp)}°C.
 						</div>
 						<div className="row" id="categories">
 							<div className="col-4">
