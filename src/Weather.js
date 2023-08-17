@@ -14,6 +14,7 @@ export default function Weather() {
 									type="search"
 									placeholder="Search for a city..."
 									className="form-control me-2"
+									autoFocus="on"
 								/>
 
 								<input
@@ -80,16 +81,6 @@ export default function Weather() {
 							</ul>
 						</div>
 					</div>
-				</div>
-
-				<div className="footer">
-					<p>
-						<a href="https://github.com/Shruti-Gupta-30/weather-react">
-							{" "}
-							Open-Source Code
-						</a>{" "}
-						by Shruti Gupta
-					</p>
 				</div>
 			</div>
 		</div>
