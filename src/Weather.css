@@ -13,9 +13,13 @@ header {
 header .search-bar {
 	display: inline-flex;
 }
-
+.changeUnit {
+	font-weight: bold;
+	/*background-color: #03364c;*/
+	color: white;
+	padding-left: 7px;
+}
 .current-weather {
-	background-color: #074171;
 	color: white;
 	border: 1px solid #dadde1;
 	border-radius: 8px;
