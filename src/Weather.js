@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
 import WeatherData from "./WeatherData";
+import axios from "axios";
 import codeMapping from "./img/mapping";
 import "./Weather.css";
 
@@ -9,9 +9,15 @@ import "./Weather.css";
 export default function Weather(props) {
 	const [city, setCity] = useState(props.defaultCity);
 	const [weatherData, setWeatherData] = useState({ ready: false });
+	const [metric, setMetric] = useState({
+		celsius: true,
+		unit: "F",
+		currentUnit: "C",
+	});
 
-	function handleResponse(response) {
+	function HandleResponse(response) {
 		console.log(response.data);
+
 		setWeatherData({
 			ready: true,
 
@@ -34,19 +40,25 @@ export default function Weather(props) {
 		});
 	}
 
+	function checkUnit(event) {
+		event.preventDefault();
+		if (metric.celsius) {
+			setMetric({ celsius: false, unit: "C", currentUnit: "F" });
+		} else {
+			setMetric({ celsius: true, unit: "F", currentUnit: "C" });
+		}
+	}
+
 	function search() {
 		const apiKey = "62d4f30b9b9119acdb354bc943220200";
 
 		let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-		axios.get(apiUrl).then(handleResponse);
+		axios.get(apiUrl).then(HandleResponse);
 	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
 		search();
-	}
-	function getCityName(event) {
-		setCity(event.target.value);
 	}
 
 	if (weatherData.ready) {
@@ -62,7 +74,7 @@ export default function Weather(props) {
 										placeholder="Search for a city..."
 										className="form-control me-2"
 										autoFocus="on"
-										onChange={getCityName}
+										onChange={(event) => setCity(event.target.value)}
 									/>
 
 									<input
@@ -79,12 +91,18 @@ export default function Weather(props) {
 		</div>*/}
 
 								<div className="col-1">
-									<button className="btn btn-primary changeUnit"> °F </button>
+									<button
+										className="btn btn-primary changeUnit"
+										onClick={checkUnit}
+									>
+										{" "}
+										°{metric.unit}{" "}
+									</button>
 								</div>
 							</div>
 						</form>
 					</header>
-					<WeatherData data={weatherData} />
+					<WeatherData data={weatherData} metric={metric} />
 				</div>
 			</div>
 		);
