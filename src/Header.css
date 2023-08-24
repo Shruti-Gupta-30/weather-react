@@ -1,0 +1,62 @@
+h4 {
+	color: black;
+}
+.Header {
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	position: relative;
+}
+.Header svg {
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+	display: flex;
+	align-items: center;
+	background-color: #9eacacc3;
+	border: 1px solid #9eacacc3;
+	padding: 0px;
+	border-radius: 50%;
+}
+.Header svg:hover {
+	border: 1px solid white;
+}
+.Header .left-arrow,
+.Header .right-arrow {
+	position: absolute;
+	color: #3d444e97;
+	top: 14px;
+}
+.Header .left-arrow {
+	left: 0;
+}
+.Header .right-arrow {
+	right: 0;
+}
+
+.Header ul {
+	display: flex;
+	gap: 4px;
+	padding: 4px 0px;
+	margin: 0;
+	list-style: none;
+	overflow-x: scroll;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	scroll-behavior: smooth;
+}
+
+.Header ul::-webkit-scrollbar {
+	display: none;
+}
+
+.Header ul li a {
+	text-decoration: none;
+	color: white;
+	background-color: #4390c6;
+	padding: 9px 24px 10px;
+	display: inline-block;
+	border-radius: 6px;
+	user-select: none;
+	white-space: nowrap;
+}

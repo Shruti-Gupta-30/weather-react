@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherData from "./WeatherData";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import codeMapping from "./img/mapping";
 import "./Weather.css";
@@ -103,6 +104,7 @@ export default function Weather(props) {
 						</form>
 					</header>
 					<WeatherData data={weatherData} metric={metric} />
+					<WeatherForecast />
 				</div>
 			</div>
 		);
