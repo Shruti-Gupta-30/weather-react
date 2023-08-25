@@ -1,5 +1,40 @@
 .WeatherForecast {
 	color: white;
-
 	padding: 0 auto;
+}
+.Forecast {
+	color: white;
+	border: 1px solid #dadde1;
+	border-radius: 8px;
+	padding: 15px 20px;
+	background-color: #4390c6;
+	font-size: 12px;
+}
+h4 {
+	color: white;
+}
+.container {
+	padding: 0;
+}
+.dayHeader {
+	font-size: 14px;
+}
+.arrow svg {
+	cursor: pointer;
+	height: 16px;
+	width: 16px;
+	background-color: white;
+	border: 1px solid white;
+	border-radius: 50%;
+}
+.arrow svg:hover {
+	border: 1px solid white;
+}
+.dropdown,
+.dropdown .hourlyDetails {
+	scroll-behavior: smooth;
+}
+.detailsSmall {
+	font-size: x-small;
+	color: rgba(255, 255, 255, 0.585);
 }

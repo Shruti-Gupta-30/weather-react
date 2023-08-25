@@ -9,12 +9,12 @@ h4 {
 }
 .Header svg {
 	cursor: pointer;
-	height: 20px;
-	width: 20px;
+	height: 18px;
+	width: 18px;
 	display: flex;
 	align-items: center;
-	background-color: #9eacacc3;
-	border: 1px solid #9eacacc3;
+	background-color: white;
+	border: 1px solid white;
 	padding: 0px;
 	border-radius: 50%;
 }
@@ -25,7 +25,7 @@ h4 {
 .Header .right-arrow {
 	position: absolute;
 	color: #3d444e97;
-	top: 14px;
+	top: 16px;
 }
 .Header .left-arrow {
 	left: 0;
