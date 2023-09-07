@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Header from "./Header";
 import "./WeatherForecast.css";
 
-export default function WeatherForecast() {
+export default function WeatherForecast(props) {
 	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<div className="WeatherForecast">
 			<Header />

@@ -21,6 +21,7 @@ export default function Weather(props) {
 
 		setWeatherData({
 			ready: true,
+			coordinates: response.data.coord,
 
 			city: response.data.name,
 			temperature: response.data.main.temp,
@@ -35,7 +36,8 @@ export default function Weather(props) {
 			humidity: response.data.main.humidity,
 			wind: response.data.wind.speed,
 
-			date: new Date(response.data.dt * 1000),
+			date: new Date(),
+			offset: response.data.timezone,
 			iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
 			background: codeMapping[response.data.weather[0].icon],
 		});
@@ -104,7 +106,7 @@ export default function Weather(props) {
 						</form>
 					</header>
 					<WeatherData data={weatherData} metric={metric} />
-					<WeatherForecast />
+					<WeatherForecast coordinates={weatherData.coordinates} />
 				</div>
 			</div>
 		);

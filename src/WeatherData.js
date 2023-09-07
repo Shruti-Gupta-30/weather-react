@@ -1,8 +1,9 @@
 import React from "react";
-import FormattedDate from "./FormatDate";
+import FormatDate from "./FormatDate";
 
 export default function WeatherData(props) {
 	const { data, metric } = props;
+	console.log(props);
 
 	const convertTemperature = (temp) => {
 		if (metric.celsius) {
@@ -25,7 +26,7 @@ export default function WeatherData(props) {
 						<strong>Current Weather in {data.city}</strong>
 					</li>
 					<li>
-						<FormattedDate date={data.date} />
+						<FormatDate date={data.date} offset={data.offset} />
 					</li>
 				</ul>
 				<div className="row" id="mainData">
