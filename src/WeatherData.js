@@ -3,7 +3,6 @@ import FormatDate from "./FormatDate";
 
 export default function WeatherData(props) {
 	const { data, metric } = props;
-	console.log(props);
 
 	const convertTemperature = (temp) => {
 		if (metric.celsius) {
