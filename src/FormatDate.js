@@ -16,7 +16,7 @@ export default function FormatDate(props) {
 	}
 
 	let hours = date.getUTCHours() + sign * Math.floor(offset);
-	console.log(date.getUTCHours() + "offset " + offset);
+
 	minutes = date.getUTCMinutes() + sign * minutes;
 
 	if (minutes >= 60) {

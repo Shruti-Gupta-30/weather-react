@@ -58,7 +58,9 @@ export default function WeatherData(props) {
 					<div className="col-4">
 						<ul>
 							<li className="category">Wind</li>
-							<li className="categoryData">{data.wind} km/h</li>
+							<li className="categoryData">
+								{Math.round(data.wind * 3.6)} km/h
+							</li>
 						</ul>
 					</div>
 					<div className="col-4">
