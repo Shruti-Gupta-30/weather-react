@@ -9,7 +9,6 @@ export default function WeatherForecast(props) {
 	let [loaded, setLoaded] = useState(false);
 	let [forecast, setForecast] = useState(null);
 	let [hours, setHours] = useState();
-	let [count, setCount] = useState({ c: 0 });
 
 	useEffect(() => {
 		setLoaded(false);
@@ -20,10 +19,10 @@ export default function WeatherForecast(props) {
 		let utcTimeStamp = Date.now() / 1000 + response.data.timezone_offset;
 		let date = new Date(utcTimeStamp * 1000);
 		setHours(date.getUTCHours());
-		console.log(response.data);
-
+		console.log(hours);
 		setLoaded(true);
 	}
+
 	if (loaded) {
 		return (
 			<div className="WeatherForecast">
@@ -216,7 +215,7 @@ export default function WeatherForecast(props) {
 			</div>
 		);
 	} else {
-		let apiKey = "001bc651977f4b024af4d84282b0f02a";
+		let apiKey = "f09d3949047ab6c9e3bcaf79cf61f619";
 		let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinates.lat}&lon=${props.coordinates.lon}&appid=${apiKey}&units=metric`;
 		axios.get(apiUrl).then(handleResponse);
 		return "Loading...";

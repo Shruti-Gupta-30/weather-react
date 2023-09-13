@@ -1,43 +1,17 @@
 import React from "react";
 
 export default function FormatDate(props) {
-	let { date, offset } = props;
-	let minutes = 0;
+	const utcTimeStamp = Date.now() / 1000 + props.offset;
 
-	const sign = offset >= 0 ? 1 : -1;
-	offset = Math.abs(offset);
+	const date = new Date(utcTimeStamp * 1000);
+	const hours = date.getUTCHours();
+	const minutes = date.getUTCMinutes();
+	const formattedHours = String(hours).padStart(2, "0");
+	const formattedMinutes = String(minutes).padStart(2, "0");
 
-	while (offset >= 60) {
-		minutes = offset;
-		offset = offset / 60;
-	}
-	while (minutes > 60) {
-		minutes = minutes % 60;
-	}
-
-	let hours = date.getUTCHours() + sign * Math.floor(offset);
-
-	minutes = date.getUTCMinutes() + sign * minutes;
-
-	if (minutes >= 60) {
-		minutes -= 60;
-		hours += 1;
-	} else if (minutes < 0) {
-		minutes += 60;
-		hours -= 1;
-	}
-
-	if (hours >= 24) {
-		hours -= 24;
-	} else if (hours < 0) {
-		hours += 24;
-	}
 	//Daypart needs to be optimized
 	let dayIndex = date.getDay();
 
-	if (sign === -1) {
-		dayIndex = (dayIndex + 6) % 7;
-	}
 	const days = [
 		"Sunday",
 		"Monday",
@@ -48,9 +22,6 @@ export default function FormatDate(props) {
 		"Saturday",
 	];
 	const day = days[dayIndex];
-
-	const formattedHours = String(hours).padStart(2, "0");
-	const formattedMinutes = String(minutes).padStart(2, "0");
 
 	return (
 		<div>
