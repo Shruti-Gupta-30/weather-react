@@ -3,6 +3,7 @@ import FormatTime from "./FormatTime";
 
 export default function WeatherForecastComponent(props) {
 	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<div className="container">
 			<div className="eachDay">
