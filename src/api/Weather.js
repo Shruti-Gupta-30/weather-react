@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import WeatherData from "./WeatherData";
+import ShowCurrentWeather from "../containers/CurrentWeather/ShowCurrentWeather";
 import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
-import codeMapping from "./img/mapping";
+import codeMapping from "../img/mapping";
 import "./Weather.css";
 
 /*import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";*/
@@ -36,7 +36,6 @@ export default function Weather(props) {
 			humidity: response.data.main.humidity,
 			wind: response.data.wind.speed,
 
-			date: new Date(),
 			offset: response.data.timezone,
 			iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
 			background: codeMapping[response.data.weather[0].icon],
@@ -105,7 +104,7 @@ export default function Weather(props) {
 							</div>
 						</form>
 					</header>
-					<WeatherData data={weatherData} metric={metric} />
+					<ShowCurrentWeather data={weatherData} metric={metric} />
 					<WeatherForecast coordinates={weatherData.coordinates} />
 				</div>
 			</div>

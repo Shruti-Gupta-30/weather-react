@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import FormatTime from "./FormatTime";
+import FormatTime from "../../components/FormatTime";
+import FormatDay from "../../components/FormatDay";
 
-export default function WeatherForecastComponent(props) {
+export default function Forecast({ daily, offset }) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
@@ -11,38 +12,34 @@ export default function WeatherForecastComponent(props) {
 				<div className="dayHeader">
 					<div className="row">
 						<div className="col-2">
-							<strong>Today</strong>
+							<strong>
+								<FormatDay timestamp={daily.sunrise} offset={offset} />
+							</strong>
 						</div>
 						<div className="col-2">
-							<strong>{Math.round(props.daily.temp.max)}°</strong> |{" "}
-							{Math.round(props.daily.temp.min)}°
+							<strong>{Math.round(daily.temp.max)}°</strong> |{" "}
+							{Math.round(daily.temp.min)}°
 						</div>
 						<div className="col-2">
 							<img
-								src={`https://openweathermap.org/img/wn/${props.daily.weather[0].icon}@2x.png`}
+								src={`https://openweathermap.org/img/wn/${daily.weather[0].icon}@2x.png`}
 								alt="Weather Icon"
 								height={40}
 								width={40}
 							/>
 						</div>
 						<div className="text-capitalize col-4 ">
-							<strong>{props.daily.weather[0].description}</strong>
+							<strong>{daily.weather[0].description}</strong>
 						</div>
 					</div>
 					<div className="row">
 						<div className="col-5">
 							Sunrise Time:{" "}
-							<FormatTime
-								timestamp={props.daily.sunrise}
-								offset={props.offset}
-							/>
+							<FormatTime timestamp={daily.sunrise} offset={offset} />
 						</div>
 						<div className="col-5">
 							Sunset Time:{" "}
-							<FormatTime
-								timestamp={props.daily.sunset}
-								offset={props.offset}
-							/>
+							<FormatTime timestamp={daily.sunset} offset={offset} />
 						</div>
 						<div className="col-2 arrow" onClick={() => setIsOpen(!isOpen)}>
 							<div style={{ display: isOpen === true ? "flex" : "none" }}>
@@ -87,22 +84,22 @@ export default function WeatherForecastComponent(props) {
 								<div className="col-4 p-0"></div>
 								<div className="col-2 p-0">
 									<div className="row detailsSmall">UV Index</div>
-									<div className="row">{Math.round(props.daily.uvi)}</div>
+									<div className="row">{Math.round(daily.uvi)}</div>
 								</div>
 								<div className="col-2 p-0">
 									<div className="row detailsSmall">Cloud Cover</div>
-									<div className="row">{props.daily.clouds}%</div>
+									<div className="row">{daily.clouds}%</div>
 								</div>
 								<div className="col-2 p-0">
 									<div className="row detailsSmall">Wind Speed</div>
 									<div className="row">
-										{Math.round(props.daily.wind_speed * 3.6)} km/h
+										{Math.round(daily.wind_speed * 3.6)} km/h
 									</div>
 								</div>
 								<div className="col-2 p-0">
 									<div className="row detailsSmall">Wind Gust</div>
 									<div className="row">
-										{Math.round(props.daily.wind_gust * 3.6)} km/h
+										{Math.round(daily.wind_gust * 3.6)} km/h
 									</div>
 								</div>
 							</div>
@@ -110,17 +107,15 @@ export default function WeatherForecastComponent(props) {
 								<div className="col-4 p-0"></div>
 								<div className="col-2 p-0">
 									<div className="row detailsSmall">Humidity</div>
-									<div className="row">{props.daily.humidity}%</div>
+									<div className="row">{daily.humidity}%</div>
 								</div>
 								<div className="col-2 p-0">
 									<div className="row detailsSmall">Dew Point</div>
-									<div className="row">
-										{Math.round(props.daily.dew_point)}°
-									</div>
+									<div className="row">{Math.round(daily.dew_point)}°</div>
 								</div>
 								<div className="col-2 p-0">
 									<div className="row detailsSmall">Pressure</div>
-									<div className="row">{props.daily.pressure} mb</div>
+									<div className="row">{daily.pressure} mb</div>
 								</div>
 							</div>
 						</div>

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./WeatherForecast.css";
-import GetForecast from "./GetForecast";
+import GetForecast from "../containers/ShowForecast/GetForecast";
 
 export default function WeatherForecast(props) {
 	let [loaded, setLoaded] = useState(false);
 	let [forecast, setForecast] = useState(null);
-	let [hours, setHours] = useState();
 
 	useEffect(() => {
 		setLoaded(false);
@@ -14,10 +13,6 @@ export default function WeatherForecast(props) {
 
 	function handleResponse(response) {
 		setForecast(response.data);
-		let utcTimeStamp = Date.now() / 1000 + response.data.timezone_offset;
-		let date = new Date(utcTimeStamp * 1000);
-		setHours(date.getUTCHours());
-		console.log(response.data);
 		setLoaded(true);
 	}
 

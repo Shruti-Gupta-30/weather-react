@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function FormatDate(props) {
-	const utcTimeStamp = Date.now() / 1000 + props.offset;
+	const utcTimeStamp = props.timestamp / 1000 + props.offset;
 
 	const date = new Date(utcTimeStamp * 1000);
 	const hours = date.getUTCHours();
@@ -9,8 +9,7 @@ export default function FormatDate(props) {
 	const formattedHours = String(hours).padStart(2, "0");
 	const formattedMinutes = String(minutes).padStart(2, "0");
 
-	//Daypart needs to be optimized
-	let dayIndex = date.getDay();
+	let dayIndex = date.getUTCDay();
 
 	const days = [
 		"Sunday",

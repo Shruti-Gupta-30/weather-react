@@ -1,7 +1,7 @@
 import React from "react";
-import FormatDate from "./FormatDate";
+import FormatDate from "../../components/FormatDate";
 
-export default function WeatherData(props) {
+export default function ShowCurrentWeather(props) {
 	const { data, metric } = props;
 
 	const convertTemperature = (temp) => {
@@ -25,7 +25,7 @@ export default function WeatherData(props) {
 						<strong>Current Weather in {data.city}</strong>
 					</li>
 					<li>
-						<FormatDate date={data.date} offset={data.offset} />
+						<FormatDate timestamp={Date.now()} offset={data.offset} />
 					</li>
 				</ul>
 				<div className="row" id="mainData">

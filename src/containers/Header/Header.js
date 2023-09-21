@@ -1,10 +1,11 @@
 import React, { useState, useRef } from "react";
 import "./Header.css";
 
-export default function Header() {
+export default function Header({ daily, offset }) {
 	const [select, setSelect] = useState(1);
 	const [display, setDisplay] = useState(true);
 	const listRef = useRef(null);
+
 	const headerLinks = [
 		{ id: 1, title: "Today" },
 		{ id: 2, title: "Fri 25" },
