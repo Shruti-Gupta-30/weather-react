@@ -19,7 +19,7 @@ export default function WeatherForecast(props) {
 	if (loaded) {
 		return <GetForecast forecastData={forecast} />;
 	} else {
-		let apiKey = "ac209dae1f283fb332a5bb7f50b0f468";
+		let apiKey = process.env.REACT_APP_FORECAST_API_KEY;
 		let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${props.coordinates.lat}&lon=${props.coordinates.lon}&appid=${apiKey}&units=metric`;
 		axios.get(apiUrl).then(handleResponse);
 		return "Loading...";
