@@ -3,17 +3,13 @@ import Weather from "./api/Weather";
 
 export default function App() {
 	return (
-		<div className="App">
-			<Weather defaultCity="New Delhi" />
-			<div className="footer">
-				<p>
-					<a href="https://github.com/Shruti-Gupta-30/weather-react">
-						{" "}
-						Open-Source Code
-					</a>{" "}
-					by Shruti Gupta
-				</p>
+		<>
+			<div className="App">
+				<Weather defaultCity="New Delhi" />
 			</div>
-		</div>
+			<footer className=" p-2">
+				<p>SkyVue by Shruti Gupta</p>
+			</footer>
+		</>
 	);
 }
